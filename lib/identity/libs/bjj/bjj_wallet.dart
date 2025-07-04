@@ -41,17 +41,19 @@ class BjjWallet {
     } else {
       prvKey = EthPrivateKey(secret);
     }
-    // Convert the master private key to a BIP32 instance
-    final master = bip32.BIP32.fromSeed(prvKey.privateKey);
+    // // Convert the master private key to a BIP32 instance
+    // final master = bip32.BIP32.fromSeed(prvKey.privateKey);
 
-    // Derive the path m/44'/60'/0'/0
-    const path = "m/44'/60'/0'/0";
-    final child = master.derivePath(path);
+    // // Derive the path m/44'/60'/0'/0
+    // const path = "m/44'/60'/0'/0";
+    // final child = master.derivePath(path);
 
-    // Get the private key
-    final privateBjjKey = child.privateKey;
+    // // Get the private key
+    // final privateBjjKey = child.privateKey;
 
-    final bjjWallet = BjjWallet(privateBjjKey!);
+    // Directly passing prvKey to make similar did as on js-sdk
+    // Also need to change DEFAULT_AUTH_CLAIM_NONCE in lib/constants.dart to 0
+    final bjjWallet = BjjWallet(prvKey.privateKey);
     return bjjWallet;
   }
 
