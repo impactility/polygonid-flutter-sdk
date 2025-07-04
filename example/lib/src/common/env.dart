@@ -2,7 +2,7 @@ import 'package:envied/envied.dart';
 
 part 'env.g.dart';
 
-@Envied()
+@Envied(path: '.env')
 abstract class Env {
   @EnviedField(varName: 'DEFAULT_ENV')
   static const String defaultEnvironment = _Env.defaultEnvironment;

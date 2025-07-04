@@ -51,8 +51,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(const HomeState.loading());
 
     try {
-      PrivateIdentityEntity identity =
-          await _polygonIdSdk.identity.addIdentity();
+      PrivateIdentityEntity identity = await _polygonIdSdk.identity
+          .addIdentity(secret: "seedseedseedseedseedseedseedseed");
       logger().i("identity: ${identity.privateKey}");
       await SecureStorage.write(
           key: SecureStorageKeys.privateKey, value: identity.privateKey);

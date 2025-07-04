@@ -82,6 +82,7 @@ ffigen:
   headers:
     entry-points:
       - 'ios/Frameworks/libpolygonid.xcframework/libpolygonid.h'
+      # - 'android/app/src/main/jnilibs/arm64-v8a/libpolygonid.h'
   functions:
     include:
       - PLGN.*
@@ -90,9 +91,13 @@ ffigen:
       - PLGN.*
   preamble: |
     // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, unused_local_variable
-  compiler-opts-automatic:
-    macos:
-      include-c-standard-library: true
+
+  # compiler-opts-automatic:
+  #   macos:
+  #     include-c-standard-library: true
+
+  compiler-opts:
+    - '-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include'
 
 flutter:
   plugin:
